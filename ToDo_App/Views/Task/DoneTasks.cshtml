@@ -1,0 +1,83 @@
+﻿@model User
+@{
+    ViewBag.Title = "DoneTasks";
+    var i = 0;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table style="border:2px solid black; width:100%; margin-bottom:10px; padding:5px">
+    <thead>
+        <tr>
+            <th colspan="5">
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="text-align:center">
+            <td><b>Title</b></td>
+            <td><b>Description</b></td>
+            <td><b>Importance</b></td>
+            <td><b>Status</b></td>
+            <td><b>Type</b></td>
+            <td><b>SubTasks</b></td>
+        </tr>
+        @foreach (var task in Model.Tasks)
+        {
+            if (task.Status == Status.Done)
+            {
+                <tr style="text-align:center">
+                    <td style="border:1px solid black">
+                        @task.Title
+                    </td>
+                    <td style="border:1px solid black">
+                        @task.Description
+                    </td>
+                    <td style="border:1px solid black">
+                        @task.Importance
+                    </td>
+                    <td style="border:1px solid black">
+                        @task.Status
+                    </td>
+                    <td style="border:1px solid black">
+                        @task.Type
+                    </td>
+                    <td style="border:1px solid black">
+                        @if (task.SubTasks!=null)
+                        {
+                            <ul>
+                                @foreach (var sub in task.SubTasks)
+                                {
+                                    if (sub.Done == true)
+                                    {
+                                        <li style="color:green">@sub.Title</li>
+                                    }
+                                    else
+                                    {
+                                        <li style="color:red">@sub.Title</li>
+
+                                    }
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span style="color:red">No Subtasks..</span>
+                        }
+                    </td>
+                </tr>
+                i++;
+            }
+
+        }
+
+        @if (i == 0)
+        {
+            <tr><td colspan="6"><h4 style="color:red;text-align:center">No results found ...</h4></td></tr>
+        }
+
+    </tbody>
+</table>
+
+

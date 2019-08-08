@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - ToDoApp</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>@Html.ActionLink("Create Task","CreateTask","User")</li>
+                <li>@Html.ActionLink("Statistic", "Statistic", "User")</li>
+                <li>@Html.ActionLink("Not Done", "NotDone", "Task")</li>
+                <li>@Html.ActionLink("In Progress", "InProgress", "Task")</li>
+                <li>@Html.ActionLink("Finished", "DoneTasks", "Task")</li>
+                <li>@Html.ActionLink("Home", "Index", "User")</li>
+
+            </ul>
+        </nav>
+    </header>
+    @RenderBody()
+
+    <footer>
+        <p><b>Contact support : goce.kabov@yahoo.com</b></p>
+    </footer>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
+
